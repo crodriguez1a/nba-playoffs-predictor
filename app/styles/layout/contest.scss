@@ -1,0 +1,27 @@
+.contest {
+  section {
+    h2 {
+      .sub-title {
+        color: $grey;
+        font-size: 0.75em;
+      }
+    }
+    display: block;
+    margin: 0 0 2em 0;
+    .facebook-feed {
+      margin: 1em 0;
+      width: 320px;
+      border: 1px solid #3d599a;
+      color: #3d599a;
+      header {
+        color: white;
+        background: #3d599a;
+      }
+
+      .steps {
+        padding: 1em;
+      }
+    }
+  }
+
+}

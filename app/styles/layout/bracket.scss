@@ -1,0 +1,561 @@
+.bracket, .standings {
+  text-align: center;
+}
+
+.standings {
+  position: relative;
+  text-align: center;
+  background: $lighter-grey;
+  padding-top: 2em;
+  margin: 2em 0;
+  .error {
+    text-align: left;
+    padding: 0.5em 0 0 1.25em;
+  }
+  h2 {
+    text-align: left;
+    padding-left: 1em;
+  }
+  ul {
+    display: table-row;
+    li {
+      display: table-cell;
+      width: 7%;
+      vertical-align: middle;
+      text-align: center;
+      border-bottom: 2px solid $light-blue;
+      padding: 0.75% 1% 0.75% 1%;
+      &.logo {
+        height: 4em;
+        img {
+          width: 4em;
+          height: auto;
+          border-radius: 2em;
+        }
+      }
+      &.predict {
+        color: $blue;
+        font-weight: bold;
+        a {
+          color: $blue;
+          display: block;
+          &:first-child {
+            .fa {
+              border-bottom: 1px dotted;
+            }
+          }
+        }
+      }
+      &.hide {
+        display: none;
+      }
+    }
+  }
+
+  .west {
+    .predict {
+      color: $red;
+      a {
+        color: $red;
+      }
+    }
+  }
+
+  .east, .west {
+    display: inline-block;
+    padding: 2em 0 4em 0;
+  }
+
+
+  .icon {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 2em;
+    span {
+      line-height: 1.8em;
+      display: inline-block;
+      vertical-align: bottom;
+      text-align: center;
+      width: 1.75em;
+      height: 1.75em;
+      border-radius: 0.875em;
+      background: $blue;
+      color: $lighter-grey;
+      font-weight: bold;
+      font-size: 1.5em;
+      &:after {
+        position: relative;
+        top: 0.25em;
+        width: 100%;
+        display: block;
+        content: "";
+        border-top: 3px solid $blue;
+      }
+    }
+    &.small-west, &.small-east {
+      position: absolute;
+      left: 1.5em;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+      width: 4em;
+      font-size: 0.75em;
+      border-radius: 0.875em;
+      text-decoration: none;
+      background: white;
+      font-weight: bold;
+      &:after {
+        display: none;
+      }
+    }
+
+    &.small-west {
+      color: $red;
+    }
+    &.small-east {
+      color: $blue;
+    }
+
+    &.large-east {
+      span {
+        background: $blue;
+        &:after {
+          border-color: $blue;
+        }
+      }
+    }
+
+    &.large-west {
+      span {
+        background: $red;
+        &:after {
+          border-color: $red;
+        }
+      }
+    }
+
+
+  }
+
+  .legend {
+    li {
+      font-size: small;
+      line-height: 1.25em;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.bracket {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  min-width: 755px;
+  padding: 1em;
+  .action-items {
+    margin: 0 0 1em 0;
+    text-align: center;
+    opacity: 0.85;
+    &:hover {
+      opacity: 1;
+    }
+    ul {
+      background: $dark-grey;
+      display: inline-block;
+      border-radius: 5em;
+      padding: 0 1em 0 1em;
+      li {
+        padding: 0.5em;
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+    &.west {
+      // text-align: left;
+      // ul {
+      //   background: $red;
+      // }
+    }
+    &.east {
+      // text-align: right;
+      // ul {
+      //   background: $blue;
+      // }
+    }
+  }
+  .champion {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    min-width: 10%;
+    max-width: 10%;
+    position: relative;
+    top: 11em;
+    img {
+      width: 100%;
+      max-width: 9em;
+      height: auto;
+      border: 2px solid $light-blue;
+      padding: 0.5em;
+      border-radius: 10em;
+      background: white;
+    }
+  }
+  .conference {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 44%;
+    min-width: 44%;
+    ul {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      min-width: 22%;
+      min-height: 30em;
+      .team {
+        position: absolute;
+        width: 100%;
+        .win-loss {
+          position: absolute;
+          font-size: 0.75em;
+          z-index: 3;
+        }
+        .seed {
+          position: relative;
+          font-size: 0.75em;
+          display: inline-block;
+          width: 2em;
+          height: 2em;
+          padding: 0.5em 0;
+          border-radius: 1em;
+          text-align: center;
+          background: white;
+          font-weight: bold;
+        }
+        .logo {
+          cursor: pointer;
+          position: absolute;
+          width: 3.5em;
+          height: 3.5em;
+          background: white;
+          text-align: center;
+          z-index: 2;
+          img {
+            width: 3.5em;
+            height: auto;
+            border-radius: 1.75em;
+            background: white;
+            &.predicting {
+              opacity: 0.5;
+              cursor: pointer;
+            }
+          }
+          &.winner {
+            background: none;
+            margin-top: -1.75em;
+            img {
+              border: 2px solid $light-blue;
+              &.predicting {
+                opacity: 1;
+              }
+            }
+            .fa {
+              top: -0.65em;
+              &.fa-plus {
+                background: $red;
+                border: none;
+                color: white;
+              }
+            }
+          }
+          .fa {
+            position: absolute;
+            top: 0.5em;
+            right: 0;
+            z-index: 4;
+            &.fa-plus {
+              font-size: 0.75em;
+              padding: 0.25em;
+              background: white;
+              border: 1px solid $red;
+              color: $red;
+              width: 1.5em;
+              height: 1.5em;
+              border-radius: 0.5em;
+            }
+          }
+        }
+        &[data-seed="1"], &[data-seed="4"], &[data-seed="2"], &[data-seed="3"] {
+          .logo {
+            top: -1.5em;
+          }
+          .seed {
+            top: -1em;
+          }
+          .win-loss {
+            top: 0.75em;
+          }
+        }
+        &[data-seed="8"], &[data-seed="5"], &[data-seed="7"], &[data-seed="6"] {
+          .logo {
+            top: 1.25em;
+          }
+          .seed {
+            top: 1em;
+          }
+          .win-loss {
+            bottom: 0.75em;
+          }
+        }
+        &[data-seed] {
+          display: none;
+        }
+        &[data-seed="1"] {
+          top: 0;
+          display: inline-block;
+          border-top: 2px solid $light-blue;
+          padding-bottom: 2em;
+        }
+        &[data-seed="8"] {
+          top: 2em;
+          display: inline-block;
+          border-bottom: 2px solid $light-blue;
+          padding-top: 2em;
+        }
+        &[data-seed="4"] {
+          top: 8em;
+          display: inline-block;
+          border-top: 2px solid $light-blue;
+          padding-bottom: 2em;
+        }
+        &[data-seed="5"] {
+          top: 10em;
+          display: inline-block;
+          border-bottom: 2px solid $light-blue;
+          padding-top: 2em;
+        }
+        &[data-seed="2"] {
+          top: 16em;
+          display: inline-block;
+          border-top: 2px solid $light-blue;
+          padding-bottom: 2em;
+        }
+        &[data-seed="7"] {
+          top: 18em;
+          display: inline-block;
+          border-bottom: 2px solid $light-blue;
+          padding-top: 2em;
+        }
+        &[data-seed="3"] {
+          top: 24em;
+          display: inline-block;
+          border-top: 2px solid $light-blue;
+          padding-bottom: 2em;
+        }
+        &[data-seed="6"] {
+          top: 26em;
+          display: inline-block;
+          border-bottom: 2px solid $light-blue;
+          padding-top: 2em;
+        }
+        &[data-seed="winner-1-8"] {
+          top: 3em;
+          border-top: 2px solid $light-blue;
+          display: block;
+          padding-bottom: 5em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="winner-4-5"] {
+          top: 6em;
+          border-bottom: 2px solid $light-blue;
+          display: block;
+          padding-top: 5em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="winner-2-7"] {
+          top: 19em;
+          border-top: 2px solid $light-blue;
+          display: block;
+          padding-bottom: 5em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="winner-3-6"] {
+          top: 22em;
+          border-bottom: 2px solid $light-blue;
+          display: block;
+          padding-top: 5em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="semifinals-1"] {
+          top: 7em;
+          border-top: 2px solid $light-blue;
+          display: block;
+          padding-bottom: 10em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="semifinals-2"] {
+          top: 13em;
+          border-bottom: 2px solid $light-blue;
+          display: block;
+          padding-top: 10em;
+          .logo {
+            z-index: 4;
+          }
+        }
+        &[data-seed="conferencefinals"] {
+          top: 9em;
+          border-bottom: 2px solid $light-blue;
+          display: block;
+          padding-top: 6em;
+          .logo {
+            z-index: 4;
+          }
+
+        }
+      }
+    }
+    &.west {
+      text-align: right;
+      ul {
+        text-align: left;
+        .team {
+          &[data-seed]:not([data-seed="conferencefinals"]) {
+            border-right: 2px solid $light-blue;
+          }
+        }
+        .logo {
+          left: -2em;
+        }
+        .seed {
+          left: 2em;
+          color: $red;
+        }
+        .win-loss {
+          left: 36%;
+        }
+      }
+    }
+    &.east {
+      text-align: left;
+      ul {
+        .team {
+          &[data-seed]:not([data-seed="conferencefinals"]) {
+            right: 0;
+            border-left: 2px solid $light-blue;
+          }
+          .logo {
+            right: -2em;
+            .fa {
+              border-color: $blue;
+              color: $blue;
+            }
+            &.winner {
+              .fa-plus {
+                background-color: $blue;
+              }
+            }
+          }
+          .seed {
+            float: right;
+            right: 2em;
+            color: $blue;
+          }
+          .win-loss {
+            right: 36%;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+
+.bracket-snapshot {
+  .conference ul .team .logo.winner img, .champion img {
+    border-radius: 0;
+  }
+  .action-items {
+    display: none;
+  }
+  &:after {
+    display: block;
+    content: "www.NBAPlayoffs.in";
+    font-weight: bold;
+    color: $blue;
+    font-size: 2em;
+  }
+}
+
+.snapshot {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+  text-align: center;
+  padding-top: 10%;
+  .content {
+    position: relative;
+    display: inline-block;
+    border: 2px solid $dark-grey;
+    background: $dark-grey;
+    width: 75%;
+    min-height: 10em;
+    .canvas {
+      overflow: hidden;
+      canvas {
+        background: white;
+        padding: 1em 0 1em 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+    .close {
+      position: absolute;
+      top: -1.25em;
+      right: -1.25em;
+      background: black;
+      color: white;
+      padding: 0.5em;
+      width: 2em;
+      height: 2em;
+      border-radius: 4em;
+      text-align: center;
+      line-height: 0;
+    }
+    .social {
+      ul {
+        margin: 0;
+        padding: 0.5em 0 0.5em 0;
+        li {
+          display: inline-block;
+          a {
+            display: inline-block;
+            padding: 0.25em 1em 0.25em 1em;
+            color: white;
+            &:hover, &:active {
+              color: $orange;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -17,4 +17,13 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import({
+  development: 'bower_components/html2canvas/build/html2canvas.js',
+  production:  'bower_components/html2canvas/build/html2canvas.min.js'
+}, {
+  'html2canvas': [
+    'default'
+  ]
+});
+
 module.exports = app.toTree();

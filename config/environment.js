@@ -43,5 +43,16 @@ module.exports = function(environment) {
 
   }
 
+
+  ENV.contentSecurityPolicy = {
+  'default-src': "'none'",
+  'script-src': "'self'",
+  'font-src': "'self'",
+  'connect-src': "'self' http://localhost:1338 https://api.imgur.com",
+  'img-src': "'self' https://api.imgur.com",
+  'style-src': "'self' 'unsafe-inline'",
+  'media-src': "'self'"
+  }
+
   return ENV;
 };

@@ -1,0 +1,74 @@
+
+<nav id="nav">
+  <ul>
+    <li class="menu-bars">
+      <a href="#" {{action "toggleMenu"}}>
+        {{#liquid-if "menuOpen" use="crossFade"}}
+          {{#if scrolled}}
+            {{fa-icon "fa-times-circle fa-2x"}}
+          {{else}}
+            {{#if isMobile}}
+              {{fa-icon "fa-times-circle fa-2x"}}
+            {{else}}
+              {{fa-icon "fa-bars fa-2x"}}
+            {{/if}}
+          {{/if}}
+        {{else}}
+          {{fa-icon "fa-bars fa-2x"}}
+        {{/liquid-if}}
+      </a>
+    </li>
+
+    {{#liquid-if "menuOpen" use="toLeft"}}
+
+      <li>
+        {{#scroll-to href="#standings"}}
+          <span {{bind-attr class="controllers.bracket.predictingStandings:active: "}} {{action "predictStandings"}}>{{fa-icon "fa-sort"}} Predict Standings
+            {{#liquid-if controllers.bracket.predictingStandings use="crossFade"}}
+              {{fa-icon "fa-close"}}
+            {{/liquid-if}}
+          </span>
+        {{/scroll-to}}
+
+        {{#if controllers.bracket.simulatedStandings use="crossFade"}}
+          <a href="#" class="refresh" {{action "refreshStandings"}}>{{fa-icon "fa-refresh"}}</a>
+        {{/if}}
+      </li>
+
+
+      <li>
+        {{#scroll-to href="#main"}}
+          <span {{bind-attr class="controllers.bracket.predictingWinners:active: "}} {{action "predictWinners"}}>{{fa-icon "fa-star-half-empty"}} Predict Winners
+            {{#liquid-if controllers.bracket.predictingWinners use="crossFade"}}
+              {{fa-icon "fa-close"}}
+            {{/liquid-if}}
+          </span>
+        {{/scroll-to}}
+
+        {{#if controllers.bracket.simulatedWinners use="crossFade"}}
+          <a href="#" class="refresh" {{action "refreshWinners"}}>{{fa-icon "fa-refresh"}}</a>
+        {{/if}}
+      </li>
+
+      <li>
+        {{#scroll-to href="#main"}}
+          <span {{action "takeSnapshot"}}>{{fa-icon "fa-facebook-official"}} Share</span>
+        {{/scroll-to}}
+      </li>
+
+      <li>
+        {{#link-to "contest" classNames="cash"}}{{fa-icon "fa-usd"}} Contest{{/link-to}}
+      </li>
+
+      {{#if scrolled}}
+        <li>{{#scroll-to href="#main"}}{{fa-icon "fa-arrow-up"}}{{/scroll-to}}</li>
+      {{/if}}
+
+
+
+    {{/liquid-if}}
+
+
+
+  </ul>
+</nav>

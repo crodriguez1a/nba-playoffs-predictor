@@ -1,0 +1,62 @@
+.detail-loader {
+  text-align: left;
+  display: block;
+  width: 100%;
+  min-height: 20px;
+  &:after{
+    display: inline-block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px dotted $grey;
+    -webkit-animation: spin 4s linear infinite;
+  }
+  &.light:after {
+    border-color: #fff;
+  }
+  &.centered {
+    text-align: center;
+  }
+  &.progress {
+    position: relative;
+    min-height: 3px;
+    text-align: left;
+    background: #c0d0d8;
+    &:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      border: none;
+      height: 3px;
+      background-color: #006899;
+      opacity: 0.5;
+      -webkit-animation: loading 20s linear infinite;
+    }
+  }
+}
+
+
+@-webkit-keyframes spin
+  {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+      }
+  }
+
+@-webkit-keyframes loading
+  { 100%
+    {
+      left: 0%;
+      width: 0;
+      z-index:100;
+    } 33.3333% {
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    } 100% {
+      left: 0;
+      width: 100%;
+    }
+  }

@@ -1,0 +1,20 @@
+<ul>
+  <li class="logo"><img {{bind-attr src="team.img"}} /></li>
+  <li {{bind-attr class="predictingStandings:predict:"}}>{{team.playoff_seed}}</li>
+  <li>{{team.games_back}}</li>
+  <li>{{team.won}}-{{team.lost}}</li>
+  {{#unless isMobile}}
+  <li>{{team.home_won}}-{{team.home_lost}}</li>
+  <li>{{team.away_won}}-{{team.away_lost}}</li>
+  <li>{{team.conference_won}}-{{team.conference_lost}}</li>
+  <li>{{team.streak}}</li>
+  <li>{{team.win_percentage}}</li>
+  <li>{{team.points_scored_per_game}}</li>
+  <li>{{team.points_allowed_per_game}}</li>
+  {{/unless}}
+  <li {{bind-attr class="predictingStandings:predict:hide"}}>
+  {{#if 'predictingStandings' use="toLeft"}}
+    <a href="#" {{action 'predictSeed' team.team_id team.playoff_seed 'up'}}>{{fa-icon "fa-sort-asc fa-2x"}}</a> <a href="#" {{action 'predictSeed' team.team_id team.playoff_seed 'down'}}>{{fa-icon "fa-sort-desc fa-2x"}}</a>
+  {{/if}}
+  </li>
+</ul>
