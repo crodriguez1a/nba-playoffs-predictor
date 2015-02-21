@@ -1,7 +1,6 @@
-# Bracket
+# NBA Playoffs Predictor
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Predict the NBA Playoffs. Predict ranking, seeding, winners and losers.
 
 ## Prerequisites
 
