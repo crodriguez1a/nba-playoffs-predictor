@@ -7,5 +7,6 @@ import Ember from 'ember';
   @class ApplicationController
 */
 export default Ember.Controller.extend({
-  needs: ['bracket', 'application']
+  needs: ['bracket', 'application'],
+  year: moment().format('YYYY')
 });

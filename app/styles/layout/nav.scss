@@ -3,11 +3,11 @@ nav {
   position: fixed;
   max-width: 90%;
   right: 1em;
-  top: 0;
+  top: 1em;
   text-align: right;
   margin: 1em 0 2em 0;
   background: rgba(255,255,255,0.85);
-  border: 1px solid $transparent-black;
+  border: 2px solid $light-grey;
   border-radius: 5em;
   z-index: 7;
   padding: 0.35em;

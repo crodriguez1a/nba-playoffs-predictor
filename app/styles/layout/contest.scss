@@ -1,27 +1,163 @@
 .contest {
+  line-height: 1.5em;
   section {
-    h2 {
+    display: block;
+    margin: 0 0 4em 0;
+    h1 {
       .sub-title {
+        display: block;
+        vertical-align: middle;
         color: $grey;
         font-size: 0.75em;
       }
     }
-    display: block;
-    margin: 0 0 2em 0;
-    .facebook-feed {
-      margin: 1em 0;
-      width: 320px;
-      border: 1px solid #3d599a;
-      color: #3d599a;
-      header {
-        color: white;
-        background: #3d599a;
+    h2 {
+      color: $blue;
+    }
+    .steps {
+      h3 {
+        margin: 1.5em 0 1.5em 0;
+      }
+      .winner {
+        li {
+          padding: 0 0.75em 0 0;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+      .make-your-picks {
+        li {
+          display: inline-block;
+          padding: 0 0.75em 0 0;
+          vertical-align: top;
+
+        }
+      }
+      .entrance-fee {
+        margin: 0 0 0 2em;
+        .fa {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        span {
+          &.usd {
+            font-size: 3em;
+            display: inline-block;
+            vertical-align: middle;
+            font-weight: bold;
+            color: $green;
+            margin-right: 0.25em;
+            .fa {
+              font-size: 0.75em;
+              margin-top: -0.25em;
+            }
+          }
+          &.pay-pal {
+            color: $blue;
+            margin-left: 1em;
+          }
+        }
       }
 
-      .steps {
-        padding: 1em;
+      .mini-bracket {
+        display: inline-block;
+        ul {
+          display: inline-block;
+          li {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 2em;
+            border-top: 3px solid $light-grey;
+            border-bottom: 3px solid $light-grey;
+            &:nth-child(-n+2) {
+              border-right: 3px solid $light-grey;
+            }
+            &:nth-child(1), &:nth-child(5) {
+              padding: 1em 0 2em 0;
+            }
+            &:nth-child(2), &:nth-child(4) {
+              padding: 0.25em 0 1.5em 0;
+            }
+            &:nth-child(3) {
+              height: 1px;
+              border-top: none;
+              .pick {
+                margin-top: -0.75em;
+              }
+            }
+            &:nth-last-child(-n+2) {
+              border-left: 3px solid $light-grey;
+            }
+            .pick {
+              position: absolute;
+              text-align: center;
+              width: 100%;
+              &.east {
+                color: $blue;
+              }
+              &.west {
+                color: $red;
+              }
+              &.champ {
+                color: white;
+                .fa {
+                  background: $orange;
+                  border-radius: 5em;
+                  padding: 0.25em;
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+      .facebook-feed {
+        width: 290px;
+        color: $facebook;
+        header {
+          color: white;
+          background: $facebook;
+          padding: 0.5em;
+        }
+
+        .post {
+
+          padding: 1em;
+          border: 2px solid $light-grey;
+          border-top: none;
+          ul {
+            li {
+              display: inline-block;
+              vertical-align: middle;
+              margin: 0 0.25em 0 0;
+            }
+          }
+        }
       }
     }
+
+    ol {
+      li {
+        list-style: decimal;
+        padding-bottom: 1em;
+      }
+      ul {
+        margin-left: 2em;
+        li {
+          list-style: lower-alpha;
+        }
+      }
+    }
+  }
+
+  .rules {
+    color: $grey;
+    h3 {
+      color: $dark-grey;
+    }
+
   }
 
 }

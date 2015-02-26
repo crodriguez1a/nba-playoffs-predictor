@@ -144,8 +144,7 @@ export default Ember.Controller.extend({
         var conference = team.get('conference');
 
         //align action items with east or west
-        console.log(conference === 'EAST', conference);
-        this.set('predictingEast', conference === 'EAST')
+        this.set('predictingEast', conference === 'EAST');
 
         if (round === 'four') {
           winners.set('champion', team);

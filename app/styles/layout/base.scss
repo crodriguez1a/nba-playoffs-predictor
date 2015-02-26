@@ -18,9 +18,27 @@ html, body, h1, h2, h3, h4 {
   font-weight: 100;
   margin: 0;
   padding: 0;
-  &.green {
+  .green {
     color: $green;
   }
+  .orange {
+    color: $orange;
+  }
+  .facebook {
+    color: $facebook;
+  }
+  .red {
+    color: $red;
+  }
+  .blue {
+    color: $blue;
+  }
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1em;
+
 }
 
 main, section, article, header, footer {
@@ -47,10 +65,13 @@ header {
       font-size: 0.75em;
     }
   }
-
+  &.main {
+    margin-bottom: 1.5em;
+  }
 }
 
 main {
+  display: block;
   position: relative;
 }
 
@@ -87,6 +108,12 @@ hr {
 
 .error {
   color: $red;
+}
+
+
+.app-logo {
+  width: 10em;
+  height: auto;
 }
 
 footer {

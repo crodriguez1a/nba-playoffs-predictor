@@ -153,11 +153,19 @@
   .action-items {
     margin: 0 0 1em 0;
     text-align: center;
-    opacity: 0.85;
     &:hover {
-      opacity: 1;
+      ul {
+        opacity: 0.95;
+        border: 2px solid $transparent-black;
+        li {
+          a {
+            /* color: $light-grey; */
+          }
+        }
+      }
     }
     ul {
+      border: 2px solid $dark-grey;
       background: $dark-grey;
       display: inline-block;
       border-radius: 5em;
@@ -170,6 +178,9 @@
           display: inline-block;
           color: white;
           text-decoration: none;
+          &:hover {
+            color: $orange;
+          }
         }
       }
     }
@@ -501,7 +512,7 @@
 }
 
 .snapshot {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -557,5 +568,4 @@
       }
     }
   }
-
 }

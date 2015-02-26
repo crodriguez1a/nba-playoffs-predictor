@@ -18,7 +18,7 @@ export default Ember.Route.extend({
   dataPromise: function() {
     var req = ajax({
       type: 'GET',
-      url: '//localhost:1338/data.json',
+      url: '//nbaplayoffs.in:1338/data.json',
       processData: true
     });
 

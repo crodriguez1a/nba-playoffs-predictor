@@ -14,6 +14,14 @@ export default Ember.Controller.extend({
   year: moment().format('YYYY'),
 
   /**
+  Signal if contest has begun
+
+  @property contestStarted
+  @type Bool
+  */
+  contestStarted: false,
+
+  /**
   Signal if current path is Bracket, certain menu items should only display on bracket route
 
   @property isBracket

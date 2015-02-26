@@ -38,7 +38,7 @@ API.getAPI = function(req, res, next) {
   var client = restify.createJsonClient({
     url: 'https://erikberg.com/',
     version: '*',
-    userAgent: 'playoffpredictions/0.1 (https://evolutionaryapps.com/)'
+    userAgent: 'playoffpredictions/0.1 (https://nbaplayoffs.in/)'
   });
 
   client.get('/nba/standings.json', function(_err, _req, _res, _obj) {

@@ -31,7 +31,7 @@
         {{/scroll-to}}
 
         {{#if controllers.bracket.simulatedStandings use="crossFade"}}
-          <a href="#" class="refresh" {{action "refreshStandings"}}>{{fa-icon "fa-refresh"}}</a>
+          <a href="#" class="refresh" title="reset" {{action "refreshStandings"}}>{{fa-icon "fa-reply"}}</a>
         {{/if}}
       </li>
 
@@ -46,19 +46,21 @@
         {{/scroll-to}}
 
         {{#if controllers.bracket.simulatedWinners use="crossFade"}}
-          <a href="#" class="refresh" {{action "refreshWinners"}}>{{fa-icon "fa-refresh"}}</a>
+          <a href="#" class="refresh" title="reset" {{action "refreshWinners"}}>{{fa-icon "fa-reply"}}</a>
         {{/if}}
       </li>
 
       <li>
         {{#scroll-to href="#main"}}
-          <span {{action "takeSnapshot"}}>{{fa-icon "fa-facebook-official"}} Share</span>
+          <span {{action "takeSnapshot"}}><span class="facebook">{{fa-icon "fa-facebook-official"}}</span> Share</span>
         {{/scroll-to}}
       </li>
 
+      {{#if contestStarted}}
       <li>
         {{#link-to "contest" classNames="cash"}}{{fa-icon "fa-usd"}} Contest{{/link-to}}
       </li>
+      {{/if}}
 
       {{#if scrolled}}
         <li>{{#scroll-to href="#main"}}{{fa-icon "fa-arrow-up"}}{{/scroll-to}}</li>

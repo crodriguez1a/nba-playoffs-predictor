@@ -1,20 +1,26 @@
 
 <main id="main">
 
-<header>
+  <header class="main">
 
-  {{#if isBracket}}
-    {{partial "nav"}}
-  {{/if}}
+    {{#if isBracket}}
+      {{partial "nav"}}
+    {{/if}}
 
-  <h2 id="title" class="page-title"> <span class="this-year">{{year}}</span> NBA <span class="sub-title"> Playoffs Predictor</span></h2>
-  <div class="cash-prize">
-    {{#link-to 'contest'}}
-      <h3>{{!fa-icon "fa-cc-paypal"}} Cash Prize: {{fa-icon "fa-usd"}}<strong>101</strong> {{fa-icon "fa-arrow-circle-up"}}</h3>
+    <h2 id="title" class="page-title hide"> <span class="this-year">{{year}}</span> NBA <span class="sub-title"> Playoffs Predictor</span></h2>
+    {{#link-to "bracket"}}
+      <img class="app-logo" src="/assets/img/nbaplayoffs.in.svg" />
     {{/link-to}}
-  </div>
 
-</header>
+    {{#if contestStarted}}
+    <div class="cash-prize">
+      {{#link-to "contest"}}
+        <h3>{{!fa-icon "fa-cc-paypal"}} Cash Prize: {{fa-icon "fa-usd"}}<strong>101</strong> {{fa-icon "fa-arrow-circle-up"}}</h3>
+      {{/link-to}}
+    </div>
+    {{/if}}
+
+  </header>
 
 {{outlet}}
 
@@ -22,9 +28,11 @@
   &copy; NBA Playoffs Predictor, {{year}}.
   <a href="https://github.com/crodriguez1a/nba-playoffs-predictor" target="_blank">{{fa-icon "fa-github-square"}} Fork us on</a>
   <a href="mailto:ideas@evolutionaryapps.com">{{fa-icon "fa-paper-plane"}} Feedback</a>
-  {{#link-to 'contest'}}
-    {{fa-icon "fa-file-text-o"}} Contest Rules
-  {{/link-to}}
+  {{#if contestStarted}}
+    {{#link-to "contest"}}
+      {{fa-icon "fa-file-text-o"}} Contest Rules
+    {{/link-to}}
+  {{/if}}
 </footer>
 
 </main>
