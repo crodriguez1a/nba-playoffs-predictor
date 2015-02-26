@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  .hide {
+    display: none;
+  }
+}
+
+html {
+  background: $canvas;
+  a {
+    color: $blue;
+  }
+}
+
+html, body, h1, h2, h3, h4 {
+  color: $dark-grey;
+  font-family: sans-serif;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  .green {
+    color: $green;
+  }
+  .orange {
+    color: $orange;
+  }
+  .facebook {
+    color: $facebook;
+  }
+  .red {
+    color: $red;
+  }
+  .blue {
+    color: $blue;
+  }
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1em;
+
+}
+
+main, section, article, header, footer {
+  display: block;
+}
+
+.liquid-container {
+  padding: 0 1px 0 1px;
+}
+
+header {
+  padding: 1em;
+  h2 {
+    font-size: 2em;
+    &.page-title {
+      text-align: left;
+    }
+    .this-year {
+      color: $blue;
+    }
+    .sub-title {
+      display: block;
+      margin-top: 0.25em;
+      font-size: 0.75em;
+    }
+  }
+  &.main {
+    margin-bottom: 1.5em;
+  }
+}
+
+main {
+  display: block;
+  position: relative;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  margin: 2em 0 2em 0;
+  border-bottom: 2px solid;
+  background: none;
+  opacity: 0.15;
+}
+
+
+.cash-prize {
+  display: inline-block;
+  margin: 1em 0 1em 0;
+  padding: 0.5em 1em 0.5em 1em;
+  background: $green;
+  border-radius: 5em;
+  h3, a {
+    color: white;
+    text-decoration: none;
+  }
+
+}
+
+.plain-content {
+  padding: 1em;
+}
+
+.error {
+  color: $red;
+}
+
+
+.app-logo {
+  width: 5em;
+  height: auto;
+  position: relative;
+  left: 2em;
+}
+
+footer {
+  padding: 1em;
+  display: block;
+  color: $grey;
+  a {
+    color: $blue;
+    padding: 0 0.5em 0 0.5em;
+    text-decoration: none;
+  }
+}

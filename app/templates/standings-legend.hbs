@@ -1,0 +1,16 @@
+<ul class="legend">
+  <li>Team</li>
+  <li {{bind-attr class="predictingStandings:predict:"}}>Seed</li>
+  <li>Games Back</li>
+  <li>Record</li>
+  {{#unless isMobile}}
+  <li>Home Record</li>
+  <li>Away Record</li>
+  <li>Conference Record</li>
+  <li>Streak</li>
+  <li>Win Percentage</li>
+  <li>Avg Points Scored</li>
+  <li>Avg Points Allowed</li>
+  {{/unless}}
+  <li {{bind-attr class="predictingStandings:predict:hide"}}>Predict</li>
+</ul>

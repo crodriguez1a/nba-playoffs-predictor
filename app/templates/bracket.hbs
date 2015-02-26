@@ -1,0 +1,276 @@
+  {{#if snapshot}}
+    <section class="snapshot">
+      <div class="content">
+        <a href="#" class="close" {{action "downloadSnapshot"}}>{{fa-icon "fa-close"}}</a>
+        <div class="canvas"></div>
+        <div class="social">
+          <ul>
+            {{#if canDownload}}
+              <li><a {{bind-attr href="downloadHref" download="downloadFileName"}} target="_blank" class="dl-snapshot">{{fa-icon "fa-cloud-download fa-2x"}}</a></li>
+            {{/if}}
+            {{#if imgurUrl}}
+              <li><a href="#" target="_blank" class="fb-share">{{fa-icon "fa-facebook-official fa-2x"}}</a></li>
+            {{else}}
+              <li>{{detail-loader centered=true light=true}}</li>
+            {{/if}}
+            <!--  <li><a href="https://twitter.com" target="_blank">{{!fa-icon "fa-twitter fa-2x"}}</a></li>
+            <li><a href="https://instagram.com" target="_blank">{{!fa-icon "fa-instagram fa-2x"}}</a></li>
+          -->
+          </li>
+        </div>
+      </div>
+    </section>
+  {{/if}}
+
+  <section class="bracket" id="bracket">
+
+    {{#if isLoadingData}}
+      {{detail-loader centered=true}}
+    {{else}}
+
+    {{#if serviceDown}}
+      <h3 class="error">{{fa-icon "fa-exclamation-circle"}} Service is down temporarily. Try again in a few minutes.</h3>
+    {{/if}}
+
+
+
+    <div class="conference west">
+
+      <ul class="round round-one">
+        {{#each team in librarySortPlayoffSeedWest}}
+          <li {{bind-attr class=":team" data-seed="team.playoff_seed"}}>
+            <span class="logo" {{action "predictWinners" team "one"}}>
+              <img {{bind-attr src="team.img" class="predictingWinners:predicting: "}} />
+              {{#if predictingWinners}}
+                <a href="#" {{action "predictWinners" team "one"}}>{{fa-icon "fa-plus"}}</a>
+              {{/if}}
+            </span>
+            <span class="seed">{{team.playoff_seed}}</span>
+            <span class="win-loss"><strong>{{team.won}}</strong>-{{team.lost}}</span>
+          </li>
+        {{/each}}
+      </ul>
+
+      <ul class="rounds round-two">
+        <li class="team" data-seed="winner-1-8">
+          <span {{bind-attr class=":winner winners.one_eight.west:logo:hide"}} {{action "predictWinners" winners.one_eight.west "two"}}>
+            <img {{bind-attr src="winners.one_eight.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.one_eight.west "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-4-5">
+          <span {{bind-attr class=":winner winners.four_five.west:logo:hide"}} {{action "predictWinners" winners.four_five.west "two"}}>
+            <img {{bind-attr src="winners.four_five.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.four_five.west "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-2-7">
+          <span {{bind-attr class=":winner winners.two_seven.west:logo:hide"}} {{action "predictWinners" winners.two_seven.west "two"}}>
+            <img {{bind-attr src="winners.two_seven.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.two_seven.west "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-3-6">
+          <span {{bind-attr class=":winner winners.three_six.west:logo:hide"}} {{action "predictWinners" winners.three_six.west "two"}}>
+            <img {{bind-attr src="winners.three_six.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.three_six.west "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+      <ul class="rounds round-three">
+        <li class="team" data-seed="semifinals-1">
+          <span {{bind-attr class=":winner winners.semis_a.west:logo:hide"}} {{action "predictWinners" winners.semis_a.west "three"}}>
+            <img {{bind-attr src="winners.semis_a.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.semis_a.west "three"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="semifinals-2">
+          <span {{bind-attr class=":winner winners.semis_b.west:logo:hide"}} {{action "predictWinners" winners.semis_b.west "three"}}>
+            <img {{bind-attr src="winners.semis_b.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.semis_b.west "three"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+      <ul class="rounds round-four">
+        <li class="team" data-seed="conferencefinals">
+          <span {{bind-attr class=":winner winners.conf.west:logo:hide"}} {{action "predictWinners" winners.conf.west "four"}}>
+            <img {{bind-attr src="winners.conf.west.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.conf.west "four"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="champion">
+      {{#liquid-unless winners.champion use="crossFade"}}
+        <img src="assets/logos/trophy.png" />
+      {{else}}
+        <img {{bind-attr src="winners.champion.img" class=":nba-champion"}} />
+      {{/liquid-unless}}
+    </div>
+
+    <div class="conference east">
+
+
+      <ul class="rounds round-four">
+        <li class="team" data-seed="conferencefinals">
+          <span {{bind-attr class=":winner winners.conf.east:logo:hide"}} {{action "predictWinners" winners.conf.east "four"}}>
+            <img {{bind-attr src="winners.conf.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.conf.east "four"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+      <ul class="rounds round-three">
+        <li class="team" data-seed="semifinals-1">
+          <span {{bind-attr class=":winner winners.semis_a.east:logo:hide"}} {{action "predictWinners" winners.semis_a.east "three"}}>
+            <img {{bind-attr src="winners.semis_a.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.semis_a.east "three"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="semifinals-2">
+          <span {{bind-attr class=":winner winners.semis_b.east:logo:hide"}} {{action "predictWinners" winners.semis_b.east "three"}}>
+            <img {{bind-attr src="winners.semis_b.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.semis_b.east "three"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+      <ul class="rounds round-two">
+        <li class="team" data-seed="winner-1-8">
+          <span {{bind-attr class=":winner winners.one_eight.east:logo:hide"}} {{action "predictWinners" winners.one_eight.east "two"}}>
+            <img {{bind-attr src="winners.one_eight.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.one_eight.east "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-4-5">
+          <span {{bind-attr class=":winner winners.four_five.east:logo:hide"}} {{action "predictWinners" winners.four_five.east "two"}}>
+            <img {{bind-attr src="winners.four_five.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.four_five.east "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-2-7">
+          <span {{bind-attr class=":winner winners.two_seven.east:logo:hide"}} {{action "predictWinners" winners.two_seven.east "two"}}>
+            <img {{bind-attr src="winners.two_seven.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.two_seven.east "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+        <li class="team" data-seed="winner-3-6">
+          <span {{bind-attr class=":winner winners.three_six.east:logo:hide"}} {{action "predictWinners" winners.three_six.east "two"}}>
+            <img {{bind-attr src="winners.three_six.east.img" class=":predicting"}} />
+            {{#if predictingWinners}}
+              <a href="#" {{action "predictWinners" winners.three_six.east "two"}}>{{fa-icon "fa-plus"}}</a>
+            {{/if}}
+          </span>
+        </li>
+      </ul>
+
+      <ul class="round round-one">
+        {{#each team in librarySortPlayoffSeedEast}}
+          <li {{bind-attr class=":team" data-seed="team.playoff_seed"}}>
+            <span class="logo" {{action "predictWinners" team "one"}}>
+              <img {{bind-attr src="team.img" class="predictingWinners:predicting: "}} />
+              {{#if predictingWinners}}
+                <a href="#" {{action "predictWinners" team "one"}}>{{fa-icon "fa-plus"}}</a>
+              {{/if}}
+            </span>
+            <span class="seed">{{team.playoff_seed}}</span>
+            <span class="win-loss"><strong>{{team.won}}</strong>-{{team.lost}}</span>
+          </li>
+        {{/each}}
+      </ul>
+
+    </div>
+
+
+    <div {{bind-attr class=":action-items predictingEast:east:west "}}>
+
+        {{#liquid-if "simulatedWinners" use="crossFade"}}
+        <ul>
+          <li>
+            {{#scroll-to href="#main"}}
+              <span {{action "takeSnapshot"}}>{{fa-icon "fa-facebook-official"}} Share</span>
+            {{/scroll-to}}
+          </li>
+
+          <li>
+            {{#scroll-to href="#main" classNames="reset"}}
+              <span {{action "refreshWinners"}}>{{fa-icon "fa-reply"}} Reset</span>
+            {{/scroll-to}}
+          </li>
+        </ul>
+        {{/liquid-if}}
+
+    </div>
+
+
+    {{/if}}
+  </section>
+
+
+  <section class="standings" id="standings">
+    <h2>Current Standings<a name="standings"></a></h2>
+
+    {{#if isLoadingData}}
+      {{detail-loader centered=true}}
+    {{else}}
+
+    {{#if serviceDown}}
+      <h3 class="error">{{fa-icon "fa-exclamation-circle"}} Service is down temporarily. Try again in a few minutes.</h3>
+    {{/if}}
+
+      <div class="east" id="east">
+        <h3><span class="icon large-east"><span>E</span></span><a name="e"></a>
+          {{#scroll-to href="#west"}}
+            <span class="icon small-west">W {{fa-icon "fa-arrow-down"}}</span>
+          {{/scroll-to}}
+        </h3>
+        {{partial "standings-legend"}}
+        {{#each team in librarySortPlayoffSeedEast}}
+          {{partial "standings"}}
+        {{/each}}
+
+      </div>
+      <div class="west" id="west">
+        <h3><span class="icon large-west"><span>W</span></span>
+          {{#scroll-to href="#east"}}
+            <span class="icon small-east">E {{fa-icon "fa-arrow-up"}}</span>
+          {{/scroll-to}}
+        </h3>
+        {{partial "standings-legend"}}
+        {{#each team in librarySortPlayoffSeedWest}}
+          {{partial "standings"}}
+        {{/each}}
+      </div>
+
+    {{/if}}
+  </section>

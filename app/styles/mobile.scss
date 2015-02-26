@@ -1,0 +1,87 @@
+.mobile {
+
+  .app-logo {
+    left: 0;
+  }
+  
+  nav {
+    border-radius: 1em;
+    background: rgba(255,255,255,0.95);
+    ul {
+      text-align: left;
+      width: 100%;
+      margin: 0 0.25em 0 0.25em;
+      li {
+        display: block;
+        width: 100%;
+        border: none;
+        a {
+          display: block;
+          width: 100%;
+          padding: 0.25em 0 0.25em 0;
+          &.refresh {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .liquid-container:empty {
+      display: none;
+    }
+  }
+
+  .bracket {
+    min-width: 320px;
+    .champion {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      top: 0;
+    }
+    .conference {
+      display: block;
+      max-width: 100%;
+      .win-loss {
+        display: none;
+      }
+    }
+
+  }
+
+  .standings {
+    h2 {
+      &:first-of-type {
+        text-align: center;
+        padding-left: 0;
+      }
+    }
+    .predict {
+      a {
+        display: inline-block;
+        border: none;
+        &:first-child, &:last-child {
+          border: none;
+        }
+      }
+
+    }
+
+    li {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+  }
+
+  .snapshot {
+    .content {
+      width: 88%;
+    }
+  }
+
+}
+
+
+.tablet {
+
+}
