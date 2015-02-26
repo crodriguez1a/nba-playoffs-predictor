@@ -1,6 +1,6 @@
 # NBA Playoffs Predictor
 
-Predict the NBA Playoffs. Predict ranking, seeding, winners and losers.
+Can be found at http://NBAPlayoffs.in.  Predict the NBA Playoffs. Predict ranking, seeding, winners and losers.
 
 ## Prerequisites
 
@@ -49,5 +49,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
->>>>>>> develop
