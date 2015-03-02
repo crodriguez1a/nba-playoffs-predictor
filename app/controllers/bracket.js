@@ -294,18 +294,18 @@ export default Ember.Controller.extend({
     },
 
     /**
+    Hide snapshot modal
+
+    @method hideSnapshot
     */
-    downloadSnapshot: function() {
+    hideSnapshot: function() {
       this.set('snapshot', false);
     },
 
     /**
-    */
-    closeSnapshot: function() {
-      this.set('snapshot', false);
-    },
-
-    /**
+    Send takeSnapshot action in application controller
+    
+    @method takeSnapshot
     */
     takeSnapshot: function() {
       this.get('controllers.application').send('takeSnapshot');
