@@ -1,5 +1,5 @@
 <ul>
-  <li class="logo"><img {{bind-attr src="team.img"}} /></li>
+  <li class="logo"><img {{bind-attr src="team.img" title="team.last_name"}} /></li>
   <li {{bind-attr class="predictingStandings:predict:"}}>{{team.playoff_seed}}</li>
   <li>{{team.games_back}}</li>
   <li>{{team.won}}-{{team.lost}}</li>

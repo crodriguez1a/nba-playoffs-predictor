@@ -23,6 +23,7 @@
   {{/if}}
 
   <section class="bracket" id="bracket">
+    <h2>{{fa-icon "fa-bookmark-o"}} Bracket</h2>
 
     {{#if isLoadingData}}
       {{detail-loader centered=true}}
@@ -32,14 +33,11 @@
       <h3 class="error">{{fa-icon "fa-exclamation-circle"}} Service is down temporarily. Try again in a few minutes.</h3>
     {{/if}}
 
-
-
     <div class="conference west">
-
       <ul class="round round-one">
         {{#each team in librarySortPlayoffSeedWest}}
           <li {{bind-attr class=":team" data-seed="team.playoff_seed"}}>
-            <span class="logo" {{action "predictWinners" team "one"}}>
+            <span class="logo" {{bind-attr title="team.last_name"}} {{action "predictWinners" team "one"}}>
               <img {{bind-attr src="team.img" class="predictingWinners:predicting: "}} />
               {{#if predictingWinners}}
                 <a href="#" {{action "predictWinners" team "one"}}>{{fa-icon "fa-plus"}}</a>
@@ -115,20 +113,17 @@
           </span>
         </li>
       </ul>
-
     </div>
 
     <div class="champion">
       {{#liquid-unless winners.champion use="crossFade"}}
-        <img src="assets/logos/trophy.png" />
+        <img class="trophy" src="assets/logos/trophy.svg" />
       {{else}}
         <img {{bind-attr src="winners.champion.img" class=":nba-champion"}} />
       {{/liquid-unless}}
     </div>
 
     <div class="conference east">
-
-
       <ul class="rounds round-four">
         <li class="team" data-seed="conferencefinals">
           <span {{bind-attr class=":winner winners.conf.east:logo:hide"}} {{action "predictWinners" winners.conf.east "four"}}>
@@ -197,7 +192,7 @@
       <ul class="round round-one">
         {{#each team in librarySortPlayoffSeedEast}}
           <li {{bind-attr class=":team" data-seed="team.playoff_seed"}}>
-            <span class="logo" {{action "predictWinners" team "one"}}>
+            <span class="logo" {{bind-attr title="team.last_name"}} {{action "predictWinners" team "one"}}>
               <img {{bind-attr src="team.img" class="predictingWinners:predicting: "}} />
               {{#if predictingWinners}}
                 <a href="#" {{action "predictWinners" team "one"}}>{{fa-icon "fa-plus"}}</a>
@@ -208,37 +203,33 @@
           </li>
         {{/each}}
       </ul>
-
     </div>
 
 
     <div {{bind-attr class=":action-items predictingEast:east:west "}}>
+      {{#liquid-if "simulatedWinners" use="crossFade"}}
+      <ul>
+        <li>
+          {{#scroll-to href="#main"}}
+            <span {{action "takeSnapshot"}}>{{fa-icon "fa-facebook-official"}} Share</span>
+          {{/scroll-to}}
+        </li>
 
-        {{#liquid-if "simulatedWinners" use="crossFade"}}
-        <ul>
-          <li>
-            {{#scroll-to href="#main"}}
-              <span {{action "takeSnapshot"}}>{{fa-icon "fa-facebook-official"}} Share</span>
-            {{/scroll-to}}
-          </li>
-
-          <li>
-            {{#scroll-to href="#main" classNames="reset"}}
-              <span {{action "refreshWinners"}}>{{fa-icon "fa-reply"}} Reset</span>
-            {{/scroll-to}}
-          </li>
-        </ul>
-        {{/liquid-if}}
-
+        <li>
+          {{#scroll-to href="#main" classNames="reset"}}
+            <span {{action "refreshWinners"}}>{{fa-icon "fa-reply"}} Reset</span>
+          {{/scroll-to}}
+        </li>
+      </ul>
+      {{/liquid-if}}
     </div>
-
 
     {{/if}}
   </section>
 
 
   <section class="standings" id="standings">
-    <h2>Current Standings<a name="standings"></a></h2>
+    <h2>{{fa-icon "fa-bookmark-o"}} Standings</h2>
 
     {{#if isLoadingData}}
       {{detail-loader centered=true}}

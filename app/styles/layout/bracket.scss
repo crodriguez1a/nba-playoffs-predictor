@@ -1,5 +1,20 @@
 .bracket, .standings {
   text-align: center;
+  h2 {
+    text-align: left;
+    padding: 0 0 0 1em;
+    margin: 0 0 2em 0;
+    .fa {
+      font-size: 0.75em;
+      display: inline-block;
+      vertical-align: top;
+      &:after {
+        content: "";
+        display: block;
+        border-top: 2px solid;
+      }
+    }
+  }
 }
 
 .standings {
@@ -11,10 +26,6 @@
   .error {
     text-align: left;
     padding: 0.5em 0 0 1.25em;
-  }
-  h2 {
-    text-align: left;
-    padding-left: 1em;
   }
   ul {
     display: table-row;
@@ -30,7 +41,7 @@
         img {
           width: 4em;
           height: auto;
-          border-radius: 2em;
+          // border-radius: 2em;
         }
       }
       &.predict {
@@ -64,6 +75,7 @@
   .east, .west {
     display: inline-block;
     padding: 2em 0 4em 0;
+    width: 100%;
   }
 
 
@@ -79,7 +91,7 @@
       width: 1.75em;
       height: 1.75em;
       border-radius: 0.875em;
-      background: $blue;
+      background: $lighter-grey;
       color: $lighter-grey;
       font-weight: bold;
       font-size: 1.5em;
@@ -100,7 +112,7 @@
       font-size: 0.75em;
       border-radius: 0.875em;
       text-decoration: none;
-      background: white;
+      background: $lighter-grey;
       font-weight: bold;
       &:after {
         display: none;
@@ -109,14 +121,17 @@
 
     &.small-west {
       color: $red;
+      border: 2px solid $red;
     }
     &.small-east {
       color: $blue;
+      border: 2px solid $blue;
     }
 
     &.large-east {
       span {
-        background: $blue;
+        border: 2px solid $blue;
+        color: $blue;
         &:after {
           border-color: $blue;
         }
@@ -125,7 +140,8 @@
 
     &.large-west {
       span {
-        background: $red;
+        border: 2px solid $red;
+        color: $red;
         &:after {
           border-color: $red;
         }
@@ -209,11 +225,17 @@
       width: 100%;
       max-width: 9em;
       height: auto;
-      border: 2px solid $light-blue;
+      //border: 2px solid $light-blue;
       padding: 0.5em;
-      border-radius: 10em;
+      border-radius: 0;
       background: white;
+      &.trophy {
+        width: 100%;
+        height: auto;
+        max-width: 6em;
+      }
     }
+
   }
   .conference {
     display: inline-block;
@@ -251,30 +273,28 @@
           position: absolute;
           width: 3.5em;
           height: 3.5em;
-          background: white;
           text-align: center;
           z-index: 2;
           img {
             width: 3.5em;
             height: auto;
-            border-radius: 1.75em;
             background: white;
             &.predicting {
-              opacity: 0.5;
               cursor: pointer;
             }
           }
           &.winner {
-            background: none;
+            background: white;
             margin-top: -1.75em;
             img {
-              border: 2px solid $light-blue;
+              //border: 2px solid $light-blue;
               &.predicting {
                 opacity: 1;
               }
             }
             .fa {
               top: -0.65em;
+              z-index: 9;
               &.fa-plus {
                 background: $red;
                 border: none;
@@ -431,6 +451,13 @@
           border-bottom: 2px solid $light-blue;
           display: block;
           padding-top: 6em;
+          &:after {
+            display: block;
+            content: "";
+            height: 1em;
+            position: relative;
+            top: 0.5em;
+          }
           .logo {
             z-index: 4;
           }
@@ -445,6 +472,11 @@
         .team {
           &[data-seed]:not([data-seed="conferencefinals"]) {
             border-right: 2px solid $light-blue;
+          }
+          &[data-seed="conferencefinals"] {
+            &:after {
+              border-right: 2px solid $light-blue;
+            }
           }
         }
         .logo {
@@ -466,6 +498,11 @@
           &[data-seed]:not([data-seed="conferencefinals"]) {
             right: 0;
             border-left: 2px solid $light-blue;
+          }
+          &[data-seed="conferencefinals"] {
+            &:after {
+              border-left: 2px solid $light-blue;
+            }
           }
           .logo {
             right: -2em;

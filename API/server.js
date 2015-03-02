@@ -10,14 +10,12 @@ var server = restify.createServer();
 
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
-
 server.use(restify.CORS());
 server.use(restify.fullResponse());
+
 restify.CORS.ALLOW_HEADERS.push('Accept-Encoding');
 restify.CORS.ALLOW_HEADERS.push('Accept-Language');
 restify.CORS.ALLOW_HEADERS.push('authorization');
-
-
 
 var API = {}
 
@@ -32,7 +30,6 @@ API.saveCache = function(obj){
   });
 
 };
-
 
 API.getAPI = function(req, res, next) {
   var client = restify.createJsonClient({
@@ -53,7 +50,6 @@ API.getAPI = function(req, res, next) {
 
   return next();
 }
-
 
 API.readCache = function(req, res, next) {
   fs.readFile(__dirname + '/cache.json', {encoding: 'utf-8'}, function (err, obj) {
@@ -76,9 +72,6 @@ API.readCache = function(req, res, next) {
 
   });
 }
-
-
-
 
 server.get({ path: '/data.json' }, API.readCache, API.getAPI);
 server.listen(1338);

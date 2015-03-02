@@ -25,7 +25,7 @@ export default Ember.Route.extend({
     return req.then(
       function resolve(res) {
         return _.map(res.response.standing, function(item) {
-          item.img = 'assets/logos/'+(item.first_name.replace(/ /g,'') + '-' + item.last_name.replace(/ /g,'')).toLowerCase() + '.png';
+          item.img = 'assets/logos/minimal/'+(item.first_name.replace(/ /g,'') + '-' + item.last_name.replace(/ /g,'')).toLowerCase() + '.png';
 
           //maintain original rankings for reset
           item.clean_seed = item.playoff_seed;

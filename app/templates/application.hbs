@@ -24,10 +24,15 @@
 
 {{outlet}}
 
+<!-- <article>
+  <a class="twitter-timeline" href="https://twitter.com/NBA" data-widget-id="571380286764900352">Tweets by @NBA</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</article> -->
+
 <footer>
   &copy; NBA Playoffs Predictor, {{year}}.
-  <a href="https://github.com/crodriguez1a/nba-playoffs-predictor" target="_blank">{{fa-icon "fa-github-square"}} Fork us on</a>
-  <a href="mailto:ideas@evolutionaryapps.com">{{fa-icon "fa-paper-plane"}} Feedback</a>
+  <a href="https://github.com/crodriguez1a/nba-playoffs-predictor" target="_blank">{{fa-icon "fa-github-square"}}&nbsp;&nbsp;Fork us on</a>
+  <a href="mailto:ideas@evolutionaryapps.com">{{fa-icon "fa-paper-plane"}}&nbsp;&nbsp;Feedback</a>
   {{#if contestStarted}}
     {{#link-to "contest"}}
       {{fa-icon "fa-file-text-o"}} Contest Rules
