@@ -40,7 +40,10 @@
             <span class="logo" {{bind-attr title="team.last_name"}} {{action "predictWinners" team "one"}}>
               <img {{bind-attr src="team.img" class="predictingWinners:predicting: "}} />
               {{#if predictingWinners}}
-                <a href="#" {{action "predictWinners" team "one"}}>{{fa-icon "fa-plus"}}</a>
+                <a href="#" {{action "predictWinners" team "one"}}>
+                  {{fa-icon "fa-plus"}}
+                  {{!t-plus a="check"}}
+                  </a>
               {{/if}}
             </span>
             <span class="seed">{{team.playoff_seed}}</span>

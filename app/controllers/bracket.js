@@ -125,6 +125,20 @@ export default Ember.Controller.extend({
   */
   simulatedWinners: false,
 
+  /**
+  Close open modals with body event
+
+  @method bodyClickHandler
+  */
+  bodyClickHandler: function() {
+    var self = this;
+    Ember.run.schedule('afterRender', function() {
+      Ember.$('body').on('touch click', function() {
+        self.send('hideSnapshot');
+      });
+    });
+  }.on('init'),
+
   actions: {
     /**
     Push winner predictions to winners object
@@ -304,7 +318,7 @@ export default Ember.Controller.extend({
 
     /**
     Send takeSnapshot action in application controller
-    
+
     @method takeSnapshot
     */
     takeSnapshot: function() {

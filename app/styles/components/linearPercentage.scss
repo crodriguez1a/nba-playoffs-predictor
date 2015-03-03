@@ -1,0 +1,196 @@
+.linear-percentage {
+  position: relative;
+  top: 0.5em;
+  height: 0.5em;
+  background: $light-grey;
+  border-radius: 1em;
+  overflow: hidden;
+  .bar {
+    position: absolute;
+    top: 0;
+    height: 0.5em;
+    background: $sixers;
+  }
+
+  &.Hawks {
+    .bar {
+      background: $hawks;
+    }
+  }
+
+  &.Raptors {
+    .bar {
+      background: $raptors;
+    }
+  }
+
+  &.Bulls {
+    .bar {
+      background: $bulls;
+    }
+  }
+
+  &.Grizzlies {
+    .bar {
+      background: $grizzlies;
+    }
+  }
+
+  &.Hornets {
+    .bar {
+      background: $hornets;
+    }
+  }
+
+  &.Nets {
+    .bar {
+      background: $nets;
+    }
+  }
+
+  &.Pacers {
+    .bar {
+      background: $pacers;
+    }
+  }
+
+  &.Pistons {
+    .bar {
+      background: $pistons;
+    }
+  }
+
+  &.Celtics {
+    .bar {
+      background: $celtics;
+    }
+  }
+
+  &.Lakers {
+    .bar {
+      background: $lakers;
+    }
+  }
+
+  &.Bucks {
+    .bar {
+      background: $bucks;
+    }
+  }
+
+  &.Sixers {
+    .bar {
+      background: $sixers;
+    }
+  }
+
+  &.Warriors {
+    .bar {
+      background: $warriors;
+    }
+  }
+
+  &.Pelicans {
+    .bar {
+      background: $pelicans;
+    }
+  }
+
+  &.Magic {
+    .bar {
+      background: $magic;
+    }
+  }
+
+  &.Rockets {
+    .bar {
+      background: $rockets;
+    }
+  }
+
+  &.Mavericks {
+    .bar {
+      background: $mavericks;
+    }
+  }
+
+  &.Nuggets {
+    .bar {
+      background: $nuggets;
+    }
+  }
+
+  &.Suns {
+    .bar {
+      background: $suns;
+    }
+  }
+
+  &.Jazz {
+    .bar {
+      background: $jazz;
+    }
+  }
+
+  &.Kings {
+    .bar {
+      background: $kings;
+    }
+  }
+
+  &.Knicks {
+    .bar {
+      background: $knicks;
+    }
+  }
+
+  &.Timberwolves {
+    .bar {
+      background: $timberwolves;
+    }
+  }
+
+  &.Thunder {
+    .bar {
+      background: $thunder;
+    }
+  }
+
+  &.TrailBlazers {
+    .bar {
+      background: $trailblazers;
+    }
+  }
+
+  &.Spurs {
+    .bar {
+      background: $spurs;
+    }
+  }
+
+  &.Heat {
+    .bar {
+      background: $heat;
+    }
+  }
+
+  &.Cavaliers {
+    .bar {
+      background: $cavaliers;
+    }
+  }
+
+  &.Wizards {
+    .bar {
+      background: $wizards;
+    }
+  }
+
+  &.Clippers {
+    .bar {
+      background: $clippers;
+    }
+  }
+
+
+}

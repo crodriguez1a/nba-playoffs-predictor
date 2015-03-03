@@ -30,6 +30,16 @@ export default Ember.Route.extend({
           //maintain original rankings for reset
           item.clean_seed = item.playoff_seed;
           item.clean_rank = item.rank;
+          //clean up team name for css use
+          item.css_name = item.last_name.replace(/ /g, '');
+          //class names cannot begin
+          if (item.css_name === '76ers') {
+            item.css_name = 'Sixers';
+          }
+
+          //flag sub 500 teams
+          var win_percentage = (_.parseInt(item.win_percentage.replace(/\./, '')))/1000;
+          item.sub_five_hundred = win_percentage < 0.5 ? true : false;
 
           return Ember.Object.create(item) ;
         });

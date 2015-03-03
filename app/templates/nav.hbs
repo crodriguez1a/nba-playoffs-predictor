@@ -2,21 +2,7 @@
 <nav id="nav">
   <ul>
     <li class="menu-bars">
-      <a href="#" {{action "toggleMenu"}}>
-        {{#liquid-if "menuOpen" use="crossFade"}}
-          {{#if scrolled}}
-            {{fa-icon "fa-times-circle fa-2x"}}
-          {{else}}
-            {{#if isMobile}}
-              {{fa-icon "fa-times-circle fa-2x"}}
-            {{else}}
-              {{fa-icon "fa-bars fa-2x"}}
-            {{/if}}
-          {{/if}}
-        {{else}}
-          {{fa-icon "fa-bars fa-2x"}}
-        {{/liquid-if}}
-      </a>
+      {{t-menu is-open=menuOpen action="toggleMenu"}} 
     </li>
 
     {{#liquid-if "menuOpen" use="toLeft"}}

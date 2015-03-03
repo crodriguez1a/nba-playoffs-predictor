@@ -45,11 +45,7 @@ export default Ember.Controller.extend({
   @property menuOpen
   @type Bool
   */
-  menuOpen: function() {
-    var movil = this.get('isMobile');
-    var tablet = this.get('isTablet');
-    return movil || tablet ? false : true;
-  }.property('isMobile'),
+  menuOpen: false,
   /**
   Signal standings sub menu, E W
 
