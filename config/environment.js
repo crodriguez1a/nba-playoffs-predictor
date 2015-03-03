@@ -51,7 +51,8 @@ module.exports = function(environment) {
   'connect-src': "'self' http://localhost:1338 https://api.imgur.com *.nbaplayoffs.in:1338",
   'img-src': "'self' https://api.imgur.com",
   'style-src': "'self' 'unsafe-inline'",
-  'media-src': "'self'"
+  'media-src': "'self'",
+  'report-uri': "'self'"
   }
 
   return ENV;
