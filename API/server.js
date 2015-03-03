@@ -21,7 +21,6 @@ var API = {}
 
 API.saveCache = function(obj){
   var timestamp = {"version": {"modified": moment().format('YYYY-MM-DDTHH:mm:ssZ')}};
-  console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
   _.merge(obj, timestamp);
 
   fs.writeFile(__dirname + '/cache.json', JSON.stringify(obj) , function (err) {
