@@ -10,7 +10,7 @@ import Ember from "ember";
 export default Ember.Component.extend({
   tagName: 'div',
   classNames: ['linear-percentage'],
-  classNameBindings: ['small','medium','large','teamcolors'],
+  classNameBindings: ['teamcolors'],
   percent: null,
   setPercentage: function() {
     var self = this;
