@@ -3,9 +3,9 @@ import { raw as ajax } from 'ic-ajax';
 import _ from 'lodash';
 
 /**
-  Bracket Homepage route
+  Application route
 
-  @class BracketRoute
+  @class ApplicationRoute
 */
 export default Ember.Route.extend({
   title: 'Application',
@@ -25,11 +25,21 @@ export default Ember.Route.extend({
     return req.then(
       function resolve(res) {
         return _.map(res.response.standing, function(item) {
-          item.img = 'assets/logos/'+(item.first_name.replace(/ /g,'') + '-' + item.last_name.replace(/ /g,'')).toLowerCase() + '.png';
+          item.img = 'assets/logos/minimal/'+(item.first_name.replace(/ /g,'') + '-' + item.last_name.replace(/ /g,'')).toLowerCase() + '.png';
 
           //maintain original rankings for reset
           item.clean_seed = item.playoff_seed;
           item.clean_rank = item.rank;
+          //clean up team name for css use
+          item.css_name = item.last_name.replace(/ /g, '');
+          //class names cannot begin
+          if (item.css_name === '76ers') {
+            item.css_name = 'Sixers';
+          }
+
+          //flag sub 500 teams
+          var win_percentage = (_.parseInt(item.win_percentage.replace(/\./, '')))/1000;
+          item.sub_five_hundred = win_percentage < 0.5 ? true : false;
 
           return Ember.Object.create(item) ;
         });
@@ -44,19 +54,19 @@ export default Ember.Route.extend({
     @method asyncRetrieveData
   */
   asyncRetrieveData: function() {
-    var bracketController = this.controllerFor('bracket');
+    var predictorController = this.controllerFor('predictor');
     var promises = [this.get('dataPromise')];
 
-    bracketController.set('isLoadingData', true);
+    predictorController.set('isLoadingData', true);
 
     return Ember.RSVP.allSettled(promises).then(function(res) {
       //console.log(_.first(res).value);
-      bracketController.setProperties({
+      predictorController.setProperties({
         standings: _.first(res).value,
         isLoadingData: false
       });
     }).catch(function(err) {
-      bracketController.set('error', err);
+      predictorController.set('error', err);
     });
   },
 

@@ -2,9 +2,9 @@ import Ember from 'ember';
 import _ from 'lodash';
 
 /**
-  Bracket Homepage controller
+  Predictor Homepage controller
 
-  @class BracketController
+  @class PredictorController
 */
 export default Ember.Controller.extend({
   needs: ['application'],
@@ -124,6 +124,20 @@ export default Ember.Controller.extend({
   @type Bool
   */
   simulatedWinners: false,
+
+  /**
+  Close open modals with body event
+
+  @method bodyClickHandler
+  */
+  bodyClickHandler: function() {
+    var self = this;
+    Ember.run.schedule('afterRender', function() {
+      Ember.$('body').on('touch click', function() {
+        self.send('hideSnapshot');
+      });
+    });
+  }.on('init'),
 
   actions: {
     /**
@@ -294,18 +308,18 @@ export default Ember.Controller.extend({
     },
 
     /**
+    Hide snapshot modal
+
+    @method hideSnapshot
     */
-    downloadSnapshot: function() {
+    hideSnapshot: function() {
       this.set('snapshot', false);
     },
 
     /**
-    */
-    closeSnapshot: function() {
-      this.set('snapshot', false);
-    },
+    Send takeSnapshot action in application controller
 
-    /**
+    @method takeSnapshot
     */
     takeSnapshot: function() {
       this.get('controllers.application').send('takeSnapshot');

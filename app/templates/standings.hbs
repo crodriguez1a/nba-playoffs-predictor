@@ -1,5 +1,5 @@
 <ul>
-  <li class="logo"><img {{bind-attr src="team.img"}} /></li>
+  <li class="logo"><img {{bind-attr src="team.img" title="team.last_name"}} /></li>
   <li {{bind-attr class="predictingStandings:predict:"}}>{{team.playoff_seed}}</li>
   <li>{{team.games_back}}</li>
   <li>{{team.won}}-{{team.lost}}</li>
@@ -8,7 +8,7 @@
   <li>{{team.away_won}}-{{team.away_lost}}</li>
   <li>{{team.conference_won}}-{{team.conference_lost}}</li>
   <li>{{team.streak}}</li>
-  <li>{{team.win_percentage}}</li>
+  <li {{bind-attr class="team.sub_five_hundred:sub_five:"}}>{{team.win_percentage}} {{linear-percentage percent=team.win_percentage teamcolors=team.css_name}}</li>
   <li>{{team.points_scored_per_game}}</li>
   <li>{{team.points_allowed_per_game}}</li>
   {{/unless}}

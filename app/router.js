@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('bracket', { path : '/' });
+  this.route('predictor', { path : '/' });
   this.route('not-found', { path: '/*path' });
   this.route('contest', { path: '/contest' });
 

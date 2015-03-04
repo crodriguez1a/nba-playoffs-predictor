@@ -9,6 +9,7 @@ html {
   background: $canvas;
   a {
     color: $blue;
+    text-decoration: none;
   }
 }
 
@@ -66,7 +67,9 @@ header {
     }
   }
   &.main {
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 2px solid $transparent-black;
   }
 }
 
@@ -112,9 +115,10 @@ hr {
 
 
 .app-logo {
-  width: 5em;
+  width: 6em;
   height: auto;
   position: relative;
+  top: 0.5em;
   left: 2em;
 }
 

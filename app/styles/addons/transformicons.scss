@@ -1,0 +1,25 @@
+nav {
+  button {
+   position: relative;
+   margin: 0 0.25em 0 0.75em;
+   &.tcon {
+     width:auto;
+     height: 32px;
+     span {
+       &.tcon-menu__lines {
+         width: 38px;
+         background: $dark-grey;
+         &::before, &::after {
+           background: $dark-grey;
+         }
+         &::before {
+           //top: 8px;
+         }
+         &::after {
+           //top: -8px;
+         }
+       }
+     }
+   }
+  }
+}

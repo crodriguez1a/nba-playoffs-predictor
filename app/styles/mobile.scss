@@ -3,14 +3,14 @@
   .app-logo {
     left: 0;
   }
-  
+
   nav {
     border-radius: 1em;
     background: rgba(255,255,255,0.95);
     ul {
       text-align: left;
       width: 100%;
-      margin: 0 0.25em 0 0.25em;
+      margin: 0;
       li {
         display: block;
         width: 100%;
@@ -24,6 +24,11 @@
           }
         }
       }
+    }
+
+    button {
+     position: relative;
+     margin: 0.25em 0 0.25em 0;
     }
 
     .liquid-container:empty {
@@ -50,12 +55,6 @@
   }
 
   .standings {
-    h2 {
-      &:first-of-type {
-        text-align: center;
-        padding-left: 0;
-      }
-    }
     .predict {
       a {
         display: inline-block;
@@ -73,9 +72,27 @@
     }
   }
 
+  .standings, .bracket {
+    h2 {
+      &:first-of-type {
+        text-align: center;
+        padding-left: 0;
+      }
+      .fa {
+        padding-top: 0.3em;
+      }
+    }
+  }
+
   .snapshot {
     .content {
       width: 88%;
+    }
+  }
+
+  .bracket-snapshot {
+    &:after {
+      font-size: 1em;
     }
   }
 

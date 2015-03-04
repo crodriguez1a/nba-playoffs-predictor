@@ -3,12 +3,6 @@
 
 export default function() {
 
-  /* Page Transition
-  this.transition(
-    this.fromRoute('bracket'),
-    this.use('toLeft', options),
-    this.reverse('toRight', options)
-  );
-  */
+
 
 }

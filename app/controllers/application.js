@@ -8,7 +8,7 @@ import { raw as ajax } from 'ic-ajax';
   @class ApplicationController
 */
 export default Ember.Controller.extend({
-  needs: ['bracket'],
+  needs: ['predictor'],
   isTablet: window.__device.tablet,
   isMobile: window.__device.mobile,
   year: moment().format('YYYY'),
@@ -22,12 +22,12 @@ export default Ember.Controller.extend({
   contestStarted: false,
 
   /**
-  Signal if current path is Bracket, certain menu items should only display on bracket route
+  Signal if current path is predictor, certain menu items should only display on predictor route
 
-  @property isBracket
+  @property isPredictor
   @type Bool
   */
-  isBracket: false,
+  isPredictor: false,
 
   /**
   Observe current path
@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
   @method observePath
   */
   observePath: function() {
-    this.set('isBracket', this.get('currentPath') === 'bracket');
+    this.set('isPredictor', this.get('currentPath') === 'predictor');
   }.observes('currentPath'),
 
 
@@ -45,11 +45,7 @@ export default Ember.Controller.extend({
   @property menuOpen
   @type Bool
   */
-  menuOpen: function() {
-    var movil = this.get('isMobile');
-    var tablet = this.get('isTablet');
-    return movil || tablet ? false : true;
-  }.property('isMobile'),
+  menuOpen: false,
   /**
   Signal standings sub menu, E W
 
@@ -76,8 +72,8 @@ export default Ember.Controller.extend({
     }else {
       if (!this.get('isMobile')) {
         this.set('menuOpen', true);
-        this.set('controllers.bracket.predictingStandings', false);
-        this.set('controllers.bracket.viewingCurrentStandings', false);
+        this.set('controllers.predictor.predictingStandings', false);
+        this.set('controllers.predictor.viewingCurrentStandings', false);
       }
     }
 
@@ -128,7 +124,7 @@ export default Ember.Controller.extend({
   @method publishToFB
   */
   publishToFB: function() {
-    var img = this.get('controllers.bracket.imgurUrl');
+    var img = this.get('controllers.predictor.imgurUrl');
     Ember.run.schedule('afterRender', function() {
       var $fb = Ember.$('.fb-share');
       //facebook feed dialog (https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.0)
@@ -142,7 +138,7 @@ export default Ember.Controller.extend({
 
     });
 
-  }.observes('controllers.bracket.imgurUrl'),
+  }.observes('controllers.predictor.imgurUrl'),
 
   /**
   Post the base 64 of the snapshot to imgur for remote hosting
@@ -169,7 +165,7 @@ export default Ember.Controller.extend({
     return req.then(
       function resolve(obj) {
         //pick url from response
-        self.set('controllers.bracket.imgurUrl', obj.response.data.link);
+        self.set('controllers.predictor.imgurUrl', obj.response.data.link);
     }).catch(function(err) {
       //errors are implictly handled because the icons won't appear while the imgur url is still null (see hb template)
       console.log(err);
@@ -191,9 +187,9 @@ export default Ember.Controller.extend({
     @method predictWinners
     */
     predictWinners: function() {
-      this.set('controllers.bracket.predictingStandings', false);
-      this.set('controllers.bracket.viewingCurrentStandings', false);
-      this.toggleProperty('controllers.bracket.predictingWinners');
+      this.set('controllers.predictor.predictingStandings', false);
+      this.set('controllers.predictor.viewingCurrentStandings', false);
+      this.toggleProperty('controllers.predictor.predictingWinners');
     },
     /**
     Set standings predictions on, others off
@@ -201,9 +197,9 @@ export default Ember.Controller.extend({
     @method predictStandings
     */
     predictStandings: function() {
-      this.set('controllers.bracket.predictingWinners', false);
-      this.set('controllers.bracket.viewingCurrentStandings', false);
-      this.toggleProperty('controllers.bracket.predictingStandings');
+      this.set('controllers.predictor.predictingWinners', false);
+      this.set('controllers.predictor.viewingCurrentStandings', false);
+      this.toggleProperty('controllers.predictor.predictingStandings');
     },
     /**
     Scroll to standings, others off
@@ -211,9 +207,9 @@ export default Ember.Controller.extend({
     @method currentStandings
     */
     currentStandings: function() {
-      this.set('controllers.bracket.predictingWinners', false);
-      this.set('controllers.bracket.predictingStandings', false);
-      this.toggleProperty('controllers.bracket.viewingCurrentStandings');
+      this.set('controllers.predictor.predictingWinners', false);
+      this.set('controllers.predictor.predictingStandings', false);
+      this.toggleProperty('controllers.predictor.viewingCurrentStandings');
     },
     /**
     Revert predictions to actual
@@ -221,7 +217,7 @@ export default Ember.Controller.extend({
     @method refreshStandings
     */
     refreshStandings: function() {
-      this.get('controllers.bracket').send('refreshStandings');
+      this.get('controllers.predictor').send('refreshStandings');
     },
 
     /**
@@ -230,26 +226,26 @@ export default Ember.Controller.extend({
     @method refreshWinners
     */
     refreshWinners: function() {
-      this.get('controllers.bracket').send('refreshWinners');
+      this.get('controllers.predictor').send('refreshWinners');
     },
 
     /**
-    Utilize html2canvas lib to convert bracket to canvas, then extract base 64
+    Utilize html2canvas lib to convert predictor to canvas, then extract base 64
 
     @method takeSnapshot
     */
     takeSnapshot: function() {
 
       this.setProperties({
-        'controllers.bracket.predictingWinners': false,
-        'controllers.bracket.snapshot': true
+        'controllers.predictor.predictingWinners': false,
+        'controllers.predictor.snapshot': true
       });
 
       var self = this;
       Ember.run.schedule('afterRender', function() {
 
-        var el = Ember.$('.bracket');
-        el.addClass('bracket-snapshot');
+        var el = Ember.$('.predictor');
+        el.addClass('predictor-snapshot');
 
         html2canvas(el, {
           onrendered: function(canvas) {
@@ -260,16 +256,16 @@ export default Ember.Controller.extend({
               var src = Ember.$('canvas')[0].toDataURL("image/png");
 
               self.setProperties({
-                'controllers.bracket.downloadHref': src,
-                'controllers.bracket.downloadFileName': self.get('year')+' NBA_Playoffs_Prediction(www.NBAplayoffs.in).png',
-                'controllers.bracket.canDownload': true
+                'controllers.predictor.downloadHref': src,
+                'controllers.predictor.downloadFileName': self.get('year')+' NBA_Playoffs_Prediction(www.NBAplayoffs.in).png',
+                'controllers.predictor.canDownload': true
               });
 
               //publish base64 to imgur
               self.publishToImgur(src);
 
             });
-            el.removeClass('bracket-snapshot');
+            el.removeClass('predictor-snapshot');
           }
         });
 
