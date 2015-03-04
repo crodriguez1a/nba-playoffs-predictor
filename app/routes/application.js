@@ -36,6 +36,8 @@ export default Ember.Route.extend({
           if (item.css_name === '76ers') {
             item.css_name = 'Sixers';
           }
+          //convert win streak to bool
+          item.win_streak = item.streak_type === "win";
 
           //flag sub 500 teams
           var win_percentage = (_.parseInt(item.win_percentage.replace(/\./, '')))/1000;
@@ -60,7 +62,7 @@ export default Ember.Route.extend({
     predictorController.set('isLoadingData', true);
 
     return Ember.RSVP.allSettled(promises).then(function(res) {
-      //console.log(_.first(res).value);
+      console.log(_.first(res).value);
       predictorController.setProperties({
         standings: _.first(res).value,
         isLoadingData: false
