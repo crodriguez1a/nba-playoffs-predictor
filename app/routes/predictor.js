@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 
 /**
-  Bracket Homepage route
+  Predictor Homepage route
 
-  @class BracketRoute
+  @class PredictorRoute
 */
 export default Ember.Route.extend({
-  title: 'Bracket'
+  title: 'Predictor'
 });

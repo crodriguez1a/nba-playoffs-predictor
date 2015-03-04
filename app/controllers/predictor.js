@@ -2,9 +2,9 @@ import Ember from 'ember';
 import _ from 'lodash';
 
 /**
-  Bracket Homepage controller
+  Predictor Homepage controller
 
-  @class BracketController
+  @class PredictorController
 */
 export default Ember.Controller.extend({
   needs: ['application'],

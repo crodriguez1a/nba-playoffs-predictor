@@ -1,0 +1,37 @@
+<section class="standings" id="standings">
+  <h2>{{fa-icon "fa-bookmark-o"}} Standings</h2>
+
+  {{#if isLoadingData}}
+    {{detail-loader centered=true}}
+  {{else}}
+
+  {{#if serviceDown}}
+    <h3 class="error">{{fa-icon "fa-exclamation-circle"}} Service is down temporarily. Try again in a few minutes.</h3>
+  {{/if}}
+
+    <div class="east" id="east">
+      <h3><span class="icon large-east"><span>E</span></span><a name="e"></a>
+        {{#scroll-to href="#west"}}
+          <span class="icon small-west">W {{fa-icon "fa-arrow-down"}}</span>
+        {{/scroll-to}}
+      </h3>
+      {{partial "standings-legend"}}
+      {{#each team in librarySortPlayoffSeedEast}}
+        {{partial "standings"}}
+      {{/each}}
+
+    </div>
+    <div class="west" id="west">
+      <h3><span class="icon large-west"><span>W</span></span>
+        {{#scroll-to href="#east"}}
+          <span class="icon small-east">E {{fa-icon "fa-arrow-up"}}</span>
+        {{/scroll-to}}
+      </h3>
+      {{partial "standings-legend"}}
+      {{#each team in librarySortPlayoffSeedWest}}
+        {{partial "standings"}}
+      {{/each}}
+    </div>
+
+  {{/if}}
+</section>

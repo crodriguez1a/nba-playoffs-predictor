@@ -3,9 +3,9 @@ import { raw as ajax } from 'ic-ajax';
 import _ from 'lodash';
 
 /**
-  Bracket Homepage route
+  Application route
 
-  @class BracketRoute
+  @class ApplicationRoute
 */
 export default Ember.Route.extend({
   title: 'Application',
@@ -54,19 +54,19 @@ export default Ember.Route.extend({
     @method asyncRetrieveData
   */
   asyncRetrieveData: function() {
-    var bracketController = this.controllerFor('bracket');
+    var predictorController = this.controllerFor('predictor');
     var promises = [this.get('dataPromise')];
 
-    bracketController.set('isLoadingData', true);
+    predictorController.set('isLoadingData', true);
 
     return Ember.RSVP.allSettled(promises).then(function(res) {
       //console.log(_.first(res).value);
-      bracketController.setProperties({
+      predictorController.setProperties({
         standings: _.first(res).value,
         isLoadingData: false
       });
     }).catch(function(err) {
-      bracketController.set('error', err);
+      predictorController.set('error', err);
     });
   },
 

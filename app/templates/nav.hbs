@@ -2,21 +2,21 @@
 <nav id="nav">
   <ul>
     <li class="menu-bars">
-      {{t-menu is-open=menuOpen action="toggleMenu"}} 
+      {{t-menu is-open=menuOpen action="toggleMenu"}}
     </li>
 
     {{#liquid-if "menuOpen" use="toLeft"}}
 
       <li>
         {{#scroll-to href="#standings"}}
-          <span {{bind-attr class="controllers.bracket.predictingStandings:active: "}} {{action "predictStandings"}}>{{fa-icon "fa-sort"}} Predict Standings
-            {{#liquid-if controllers.bracket.predictingStandings use="crossFade"}}
+          <span {{bind-attr class="controllers.predictor.predictingStandings:active: "}} {{action "predictStandings"}}>{{fa-icon "fa-sort"}} Predict Standings
+            {{#liquid-if controllers.predictor.predictingStandings use="crossFade"}}
               {{fa-icon "fa-close"}}
             {{/liquid-if}}
           </span>
         {{/scroll-to}}
 
-        {{#if controllers.bracket.simulatedStandings use="crossFade"}}
+        {{#if controllers.predictor.simulatedStandings use="crossFade"}}
           <a href="#" class="refresh" title="reset" {{action "refreshStandings"}}>{{fa-icon "fa-reply"}}</a>
         {{/if}}
       </li>
@@ -24,14 +24,14 @@
 
       <li>
         {{#scroll-to href="#main"}}
-          <span {{bind-attr class="controllers.bracket.predictingWinners:active: "}} {{action "predictWinners"}}>{{fa-icon "fa-star-half-empty"}} Predict Winners
-            {{#liquid-if controllers.bracket.predictingWinners use="crossFade"}}
+          <span {{bind-attr class="controllers.predictor.predictingWinners:active: "}} {{action "predictWinners"}}>{{fa-icon "fa-star-half-empty"}} Predict Winners
+            {{#liquid-if controllers.predictor.predictingWinners use="crossFade"}}
               {{fa-icon "fa-close"}}
             {{/liquid-if}}
           </span>
         {{/scroll-to}}
 
-        {{#if controllers.bracket.simulatedWinners use="crossFade"}}
+        {{#if controllers.predictor.simulatedWinners use="crossFade"}}
           <a href="#" class="refresh" title="reset" {{action "refreshWinners"}}>{{fa-icon "fa-reply"}}</a>
         {{/if}}
       </li>

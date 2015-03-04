@@ -3,12 +3,12 @@
 
   <header class="main">
 
-    {{#if isBracket}}
+    {{#if isPredictor}}
       {{partial "nav"}}
     {{/if}}
 
     <h2 id="title" class="page-title hide"> <span class="this-year">{{year}}</span> NBA <span class="sub-title"> Playoffs Predictor</span></h2>
-    {{#link-to "bracket"}}
+    {{#link-to "predictor"}}
       <img class="app-logo" src="/assets/img/nbaplayoffs.in.svg" />
     {{/link-to}}
 
