@@ -2,7 +2,16 @@
   <li class="logo"><img {{bind-attr src="team.img" title="team.last_name"}} /></li>
   <li {{bind-attr class="predictingStandings:predict:"}}>{{team.playoff_seed}}</li>
   <li>{{team.games_back}}</li>
-  <li>{{team.won}}-{{team.lost}}</li>
+  <li class="record">
+    <span>{{team.won}}-{{team.lost}}</span>
+    <span {{bind-attr class="team.win_streak:win-streak:lose-streak"}}>
+      {{#if team.win_streak}}
+        {{fa-icon "fa-circle"}}
+      {{else}}
+        {{fa-icon "fa-circle-o"}}
+      {{/if}}
+    </span>
+  </li>
   {{#unless isMobile}}
   <li>{{team.home_won}}-{{team.home_lost}}</li>
   <li>{{team.away_won}}-{{team.away_lost}}</li>
