@@ -10,13 +10,16 @@
   }
   ul {
     display: table-row;
+    &:nth-child(odd) {
+      background: white;
+    }
     li {
       display: table-cell;
       width: 7%;
       vertical-align: middle;
       text-align: center;
-      border-bottom: 2px solid $light-blue;
       padding: 0.75% 1% 0.75% 1%;
+
       &.logo {
         height: 4em;
         img {
@@ -151,10 +154,17 @@
   }
 
   .legend {
+    position: relative;
     li {
       font-size: small;
       line-height: 1.25em;
       vertical-align: bottom;
+    }
+    &.fixed {
+      top: 0;
+      position: fixed;
+      z-index: 4;
+      background: rgba(255,255,255,0.75);
     }
   }
 }
