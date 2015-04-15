@@ -54,12 +54,27 @@ export default Ember.Controller.extend({
   */
   standingsSubMenuOpen: false,
   /**
+  Signal if standings scrolled into view
+
+  @property viewingStandings
+  @type Bool
+  */
+  viewingStandings: false,
+  /**
   Signal user scroll
 
   @property scrolled
   @type Bool
   */
   scrolled: false,
+  /**
+  Alias of controller for predictor
+
+  @property predictor
+  @type Alias
+  */
+  //TODO: Implement
+  predictor: Ember.computed.alias('controller.predictor'),
   /**
   Toggle menu/menu items upon scrolling
 
@@ -92,6 +107,9 @@ export default Ember.Controller.extend({
         }else {
           self.set('scrolled', false);
         }
+
+        self.set('viewingStandings', Ember.$(window).scrollTop() >= Ember.$('#standings').position().top);
+
       });
     });
   }.on('init'),
@@ -244,9 +262,8 @@ export default Ember.Controller.extend({
       var self = this;
       Ember.run.schedule('afterRender', function() {
 
-        var el = Ember.$('.predictor');
-        el.addClass('predictor-snapshot');
-
+        var el = Ember.$('#bracket');
+        el.addClass('bracket-snapshot');
         html2canvas(el, {
           onrendered: function(canvas) {
             var $canvas = Ember.$('.canvas');
@@ -265,7 +282,7 @@ export default Ember.Controller.extend({
               self.publishToImgur(src);
 
             });
-            el.removeClass('predictor-snapshot');
+            el.removeClass('bracket-snapshot');
           }
         });
 

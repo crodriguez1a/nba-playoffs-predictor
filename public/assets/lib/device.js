@@ -164,4 +164,4 @@ window.__device = (function() {
 })();
 
 // Dev Logging
-console.log(JSON.stringify(__device));
+//console.log(JSON.stringify(__device));
