@@ -160,11 +160,6 @@
       line-height: 1.25em;
       vertical-align: bottom;
     }
-    &.fixed {
-      top: 0;
-      position: fixed;
-      z-index: 4;
-      background: rgba(255,255,255,0.75);
-    }
+    
   }
 }
